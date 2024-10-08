@@ -9,6 +9,6 @@ class TemplateTest {
     public void oneVariable() throws Exception {
         Template template = new Template("Hello, ${name}");
         template.set("name", "Reader");
-        assertEquals("Hello Reader", template.evaluate());
+        assertEquals("Hello, Reader", template.evaluate());
     }
 }
