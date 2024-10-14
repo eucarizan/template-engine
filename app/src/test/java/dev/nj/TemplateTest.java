@@ -18,4 +18,11 @@ class TemplateTest {
         template.set("name", "someone else");
         assertEquals("Hello, someone else", template.evaluate());
     }
+
+    @Test
+    public void differentTemplate() throws Exception {
+        Template template = new Template("Hi, ${name}");
+        template.set("name", "someone else");
+        assertEquals("Hi, someone else", template.evaluate());
+    }
 }
