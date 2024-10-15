@@ -3,8 +3,10 @@ package dev.nj;
 public class Template {
 
     private String variableValue;
+    private String templateText;
 
     public Template(String templateText) {
+        this.templateText = templateText;
     }
 
     public void set(String variable, String value) {
@@ -12,6 +14,6 @@ public class Template {
     }
 
     public String evaluate() {
-        return "Hello, " + variableValue;
+        return templateText.replaceAll("\\$\\{name\\}", variableValue);
     }
 }
