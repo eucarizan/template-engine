@@ -32,6 +32,6 @@ class TemplateTest {
         template.set("one", "1");
         template.set("two", "2");
         template.set("three", "3");
-        assertEquals("1 2 3", template.evaluate());
+        assertEquals("1, 2, 3", template.evaluate());
     }
 }
