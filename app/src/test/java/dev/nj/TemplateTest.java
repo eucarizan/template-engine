@@ -9,7 +9,7 @@ public class TemplateTest {
     private Template template;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         template = new Template("${one}, ${two}, ${three}");
         template.set("one", "1");
         template.set("two", "2");
@@ -17,18 +17,18 @@ public class TemplateTest {
     }
 
     @Test
-    public void multipleVariables() throws Exception {
+    public void multipleVariables() {
         assertTemplateEvaluatesTo("1, 2, 3");
     }
 
     @Test 
-    public void unknownVariablesAreIgnored() throws Exception {
+    public void unknownVariablesAreIgnored() {
         template.set("doesnotexist", "Hi");
         assertTemplateEvaluatesTo("1, 2, 3");
     }
 
     @Test
-    public void missingValueRaisesException() throws Exception {
+    public void missingValueRaisesException() {
         try {
             new Template("${foo}").evaluate();
             fail("evaluate() should throw an exception if " +
@@ -36,6 +36,14 @@ public class TemplateTest {
         } catch (MissingValueException expected) {
 
         }
+    }
+
+    @Test
+    public void variablesGetProcessedJustOnce() {
+        template.set("one", "${one}");
+        template.set("two", "${three}");
+        template.set("three", "${two}");
+        assertTemplateEvaluatesTo("${one}, ${three}, ${two}");
     }
 
     private void assertTemplateEvaluatesTo(String expected) {
