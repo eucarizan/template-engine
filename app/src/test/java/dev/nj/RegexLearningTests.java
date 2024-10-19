@@ -21,9 +21,16 @@ public class RegexLearningTests {
         String haystack = "The needle shop sells needles";
         String regex = "(needle)";
         Matcher matcher = Pattern.compile(regex).matcher(haystack);
+
         assertTrue(matcher.find());
         assertEquals(4, matcher.start(), "Wrong start index of 1st match");
         assertEquals(10, matcher.end(), "Wrong end index of 1st match");
+
+        assertTrue(matcher.find());
+        assertEquals(22, matcher.start(), "Wrong start index of 2nd match");
+        assertEquals(28, matcher.end(), "Wrong end index of 2nd match");
+
+        assertFalse(matcher.find(), "SHould not  have any more matches");
     }
 
 }
