@@ -15,5 +15,12 @@ public class TemplateParseTests {
         assertEquals("", segments.get(0));
     }
 
-}
+    @Test
+    public void templateWithOnlyPlainText() {
+        TemplateParse parse = new TemplateParse();
+        List<String> segments = parse.parse("plain text only");
+        assertEquals(1, segments.size(), "Number of segments");
+        assertEquals(segments.get(0), "plain text only");
+    }
 
+}
