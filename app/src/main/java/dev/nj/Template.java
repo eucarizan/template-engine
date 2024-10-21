@@ -28,23 +28,31 @@ public class Template {
         return concatenate(segments);
     }
 
-    private void append(String segment, StringBuilder result) {
-        if (segment.startsWith("${") && segment.endsWith("}")) {
-            String var = segment.substring(2, segment.length() - 1);
-            if (!variables.containsKey(var)) {
-                throw new MissingValueException("No value for " + segment);
-            }
-            result.append(variables.get(var));
-        } else {
-            result.append(segment);
-        }
-    }
-
     private String concatenate(List<String> segments) {
         StringBuilder result = new StringBuilder();
         for (String segment : segments) {
             append(segment, result);
         }
         return result.toString();
+    }
+
+    private void append(String segment, StringBuilder result) {
+        if (isVariable(segment)) {
+            evaluateVariable(segment, result);
+        } else {
+            result.append(segment);
+        }
+    }
+
+    private boolean isVariable(String segment) {
+        return segment.startsWith("${") && segment.endsWith("}");
+    }
+
+    private void evaluatevariable(String segment, StringBuilder result) {
+        String var = segment.substring(2, segment.length() - 1);
+        if (!variables.containsKey(var)) {
+            throw new MissingValueException("No value for " + segment);
+        }
+        result.append(variables.get(var));
     }
 }
