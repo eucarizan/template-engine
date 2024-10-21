@@ -25,11 +25,7 @@ public class Template {
     public String evaluate() {
         TemplateParse parser = new TemplateParse();
         List<String> segments = parser.parse(templateText);
-        StringBuilder result = new StringBuilder();
-        for (String segment : segments) {
-            append(segment, result);
-        }
-        return result.toString();
+        return concatenate(segments);
     }
 
     private void append(String segment, StringBuilder result) {
@@ -42,5 +38,13 @@ public class Template {
         } else {
             result.append(segment);
         }
+    }
+
+    private String concatenate(List<String> segments) {
+        StringBuilder result = new StringBuilder();
+        for (String segment : segments) {
+            append(segment, result);
+        }
+        return result.toString();
     }
 }
