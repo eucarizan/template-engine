@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestTemplatePerformance {
+public class TemplatePerformanceTests {
 
     private Template template;
 
@@ -52,3 +52,4 @@ public class TestTemplatePerformance {
     }
 
 }
+

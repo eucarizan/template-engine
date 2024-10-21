@@ -14,6 +14,10 @@ public class TemplateParse {
         return segments;
     }
 
+    public List<Segment> parseSegments(String template) {
+        return null;
+    }
+
     private int collectSegments(List<String> segs, String src) {
         Pattern pattern = Pattern.compile("\\$\\{[^}]*\\}");
         Matcher matcher = pattern.matcher(src);
@@ -51,3 +55,4 @@ public class TemplateParse {
     }
 
 }
+

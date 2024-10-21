@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TemplateTest {
+public class TemplateTests {
 
     private Template template;
 
@@ -50,3 +50,4 @@ public class TemplateTest {
         assertEquals(expected, template.evaluate());
     }
 }
+

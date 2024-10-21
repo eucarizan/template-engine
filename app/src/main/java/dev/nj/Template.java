@@ -48,7 +48,7 @@ public class Template {
         return segment.startsWith("${") && segment.endsWith("}");
     }
 
-    private void evaluatevariable(String segment, StringBuilder result) {
+    private void evaluateVariable(String segment, StringBuilder result) {
         String var = segment.substring(2, segment.length() - 1);
         if (!variables.containsKey(var)) {
             throw new MissingValueException("No value for " + segment);
@@ -56,3 +56,4 @@ public class Template {
         result.append(variables.get(var));
     }
 }
+
