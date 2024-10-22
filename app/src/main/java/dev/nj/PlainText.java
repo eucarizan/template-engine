@@ -1,6 +1,14 @@
 package dev.nj;
 
 public class PlainText implements Segment {
-    public PlainText(String text) { }
+    private String text;
+
+    public PlainText(String text) {
+        this.text = text;
+    }
+
+    public boolean equals(Object other) {
+        return text.equals(((PlainText) other).text);
+    }
 }
 
