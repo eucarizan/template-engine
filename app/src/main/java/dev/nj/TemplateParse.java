@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class TemplateParse {
     public List<String> parse(String template) {
-        List<String> segments = new ArrayList<String>();
+        List<String> segments = new ArrayList<>();
         int index = collectSegments(segments, template);
         addTail(segments, template, index);
         addEmptyStringIfTemplateWasEmpty(segments);
@@ -19,7 +19,7 @@ public class TemplateParse {
     }
 
     private int collectSegments(List<String> segs, String src) {
-        Pattern pattern = Pattern.compile("\\$\\{[^}]*\\}");
+        Pattern pattern = Pattern.compile("\\$\\{[^}]*}");
         Matcher matcher = pattern.matcher(src);
         int index = 0;
 
