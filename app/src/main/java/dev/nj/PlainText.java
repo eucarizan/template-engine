@@ -3,7 +3,7 @@ package dev.nj;
 import java.util.Map;
 
 public class PlainText implements Segment {
-    private String text;
+    private final String text;
 
     public PlainText(String text) {
         this.text = text;
@@ -17,4 +17,3 @@ public class PlainText implements Segment {
         return text.equals(((PlainText) other).text);
     }
 }
-

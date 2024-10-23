@@ -3,18 +3,14 @@ package dev.nj;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static java.util.Map.Entry;
 
 public class Template {
 
-    private Map<String, String> variables;
-    private String templateText;
+    private final Map<String, String> variables;
+    private final String templateText;
 
     public Template(String templateText) {
-        this.variables = new HashMap<String, String>();
+        this.variables = new HashMap<>();
         this.templateText = templateText;
     }
 
@@ -36,24 +32,4 @@ public class Template {
         return result.toString();
     }
 
-    private void append(String segment, StringBuilder result) {
-        if (isVariable(segment)) {
-            evaluateVariable(segment, result);
-        } else {
-            result.append(segment);
-        }
-    }
-
-    public static boolean isVariable(String segment) {
-        return segment.startsWith("${") && segment.endsWith("}");
-    }
-
-    private void evaluateVariable(String segment, StringBuilder result) {
-        String var = segment.substring(2, segment.length() - 1);
-        if (!variables.containsKey(var)) {
-            throw new MissingValueException("No value for " + segment);
-        }
-        result.append(variables.get(var));
-    }
 }
-

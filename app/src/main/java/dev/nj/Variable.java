@@ -3,7 +3,7 @@ package dev.nj;
 import java.util.Map;
 
 public class Variable implements Segment {
-    private String name;
+    private final String name;
 
     public Variable(String name) {
         this.name = name;
@@ -20,4 +20,3 @@ public class Variable implements Segment {
         return name.equals(((Variable) other).name);
     }
 }
-
